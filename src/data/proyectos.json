@@ -1,0 +1,22 @@
+[
+  {
+    "codigo": 1,
+    "nombre": "Sistema ERP",
+    "cliente": "Empresa ABC",
+    "descripcion": "ERP empresarial",
+    "fechaInicio": "2026-06-10",
+    "fechaEntrega": "2026-12-10",
+    "estado": "planificacion",
+    "liderTecnico": "Carlos Perez"
+  },
+  {
+    "codigo": 2,
+    "nombre": "Alerta Urbana",
+    "cliente": "Yo",
+    "descripcion": "Proyecto Final ",
+    "fechaInicio": "2026-06-10",
+    "fechaEntrega": "2026-12-10",
+    "estado": "En desarrollo",
+    "liderTecnico": "Ivan Florez"
+  }
+]
