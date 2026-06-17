@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const router = express.Router();
 
 const fs = require("fs");
@@ -8,6 +8,9 @@ const rutaBugs = path.join(
     __dirname,
     "../data/bugs.json"
 );
+
+const rutaProyectos = path.join(__dirname, "../data/proyectos.json");
+const rutaDesarrolladores = path.join(__dirname, "../data/desarrolladores.json");
 
 function leerBugs() {
 
@@ -42,7 +45,51 @@ function guardarBugs(bugs) {
     );
 }
 
+function leerProyectos() {
+    if (!fs.existsSync(rutaProyectos)) {
+        fs.writeFileSync(rutaProyectos, "[]");
+    }
+
+    const data = fs.readFileSync(rutaProyectos, "utf8");
+
+    if (!data.trim()) return [];
+
+    return JSON.parse(data);
+}
+
+function leerDesarrolladores() {
+    if (!fs.existsSync(rutaDesarrolladores)) {
+        fs.writeFileSync(rutaDesarrolladores, "[]");
+    }
+
+    const data = fs.readFileSync(rutaDesarrolladores, "utf8");
+
+    if (!data.trim()) return [];
+
+    return JSON.parse(data);
+}
+
 router.post("/", (req, res) => {
+
+    // Validar existencia del proyecto
+    const proyectos = leerProyectos();
+    const proyecto = proyectos.find(p => p.codigo == req.body.proyectoCodigo);
+
+    if (!proyecto) {
+        return res.status(404).json({
+            mensaje: "Proyecto no encontrado"
+        });
+    }
+
+    // Validar existencia del desarrollador asignado
+    const desarrolladores = leerDesarrolladores();
+    const dev = desarrolladores.find(d => d.identificacion == req.body.desarrolladorAsignado);
+
+    if (!dev) {
+        return res.status(404).json({
+            mensaje: "Desarrollador no encontrado"
+        });
+    }
 
     const bugs = leerBugs();
 

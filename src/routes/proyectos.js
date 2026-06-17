@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const router = express.Router();
 
 const fs = require("fs");
@@ -29,6 +29,22 @@ function guardarProyectos(proyectos) {
         rutaProyectos,
         JSON.stringify(proyectos, null, 2)
     );
+}
+
+// Helper to read sprints for business rule checks
+const rutaSprints = path.join(__dirname, "../data/sprints.json");
+function leerSprints() {
+    if (!fs.existsSync(rutaSprints)) {
+        fs.writeFileSync(rutaSprints, "[]");
+    }
+
+    const data = fs.readFileSync(rutaSprints, "utf8");
+
+    if (!data.trim()) {
+        return [];
+    }
+
+    return JSON.parse(data);
 }
 
 router.post("/", (req, res) => {
@@ -113,6 +129,19 @@ router.delete("/:codigo", (req, res) => {
         });
     }
 
+    // Validación: no permitir eliminar si existen sprints activos asociados
+    const sprints = leerSprints();
+    const sprintActivo = sprints.find(
+        s => s.proyectoCodigo == proyecto.codigo && s.estado === "activo"
+    );
+
+    if (sprintActivo) {
+        return res.status(400).json({
+            mensaje: "No puede eliminarse porque tiene sprints activos"
+        });
+    }
+
+    // Mantener regla existente: solo eliminar proyectos cancelados
     if (proyecto.estado !== "cancelado") {
         return res.status(400).json({
             mensaje:
