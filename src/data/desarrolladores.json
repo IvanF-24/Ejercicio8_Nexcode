@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "identificacion": 1001,
+    "nombre": "Ivan Florez",
+    "rol": "backend",
+    "seniority": "Junior",
+    "stackTecnologico": "Node.js"
+  },
+  {
+    "identificacion": 1002,
+    "nombre": "Pedro Agudelo",
+    "rol": "backend",
+    "seniority": "senior",
+    "stackTecnologico": "Node.js"
+  }
+]

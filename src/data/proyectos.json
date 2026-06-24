@@ -16,7 +16,17 @@
     "descripcion": "Proyecto Final ",
     "fechaInicio": "2026-06-10",
     "fechaEntrega": "2026-12-10",
-    "estado": "En desarrollo",
+    "estado": "Entregado",
+    "liderTecnico": "Ivan Florez"
+  },
+  {
+    "codigo": 3,
+    "nombre": "NexCode MVP",
+    "cliente": "TechCorp SAS",
+    "descripcion": "ERP empresarial",
+    "fechaInicio": "2026-06-10",
+    "fechaEntrega": "2026-12-10",
+    "estado": "Activo",
     "liderTecnico": "Ivan Florez"
   }
 ]

@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "numero": 4,
+    "proyectoCodigo": 2,
+    "fechaInicio": "2026-06-10",
+    "fechaFin": "2026-06-24",
+    "objetivo": "Implementar autenticación",
+    "estado": "completado"
+  }
+]

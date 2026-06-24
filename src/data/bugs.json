@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "codigo": 1,
+    "proyectoCodigo": 1,
+    "descripcion": "Error en el login",
+    "severidad": "critica",
+    "desarrolladorAsignado": 1001,
+    "estado": "abierto",
+    "fechaCreacion": "2026-06-10"
+  },
+  {
+    "codigo": 2,
+    "proyectoCodigo": 3,
+    "descripcion": "Error en el login",
+    "severidad": "critica",
+    "desarrolladorAsignado": 1002,
+    "estado": "resuelto",
+    "fechaCreacion": "2026-06-10"
+  }
+]
